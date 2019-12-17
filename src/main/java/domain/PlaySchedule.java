@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import static utils.DateTimeUtils.format;
 
 public class PlaySchedule {
+    private static final int EMPTY = 0;
+
     private final LocalDateTime startDateTime;
     private int capacity;
 
@@ -38,6 +40,10 @@ public class PlaySchedule {
 
     public void minusCapacity(int headCount) {
         capacity -= headCount;
+    }
+
+    public boolean isCapacityEmpty() {
+        return capacity == EMPTY;
     }
 
 }

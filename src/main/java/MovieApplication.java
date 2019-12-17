@@ -60,6 +60,9 @@ public class MovieApplication {
                         headCount,
                         movieTotalFee));
             }
+            if (selectedSchedule.isCapacityEmpty()) {
+                selectedMovie.removeSchedule(scheduleSequence);
+            }
             additional = InputView.inputAdditionalMovie();
             if (additional == NO) {
                 OutputView.printReservationList(reservationList);

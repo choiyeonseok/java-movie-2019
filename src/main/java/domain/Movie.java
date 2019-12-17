@@ -56,4 +56,7 @@ public class Movie {
         return headCount * price;
     }
 
+    public void removeSchedule(int scheduleSequence) {
+        playSchedules.remove(scheduleSequence);
+    }
 }

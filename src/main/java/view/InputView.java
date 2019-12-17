@@ -55,7 +55,7 @@ public class InputView {
         System.out.println("## 예약할 인원 수를 입력하세요");
         try {
             int headCount = scanner.nextInt();
-            verifyHeadCount(movie.getSchedule(sequence), headCount); // => @실패 시 맨 처음 영화 선택 단계로 돌아가야 함
+            verifyHeadCount(movie.getSchedule(sequence), headCount);
             return headCount;
         } catch (Exception e) {
             OutputView.invalidMessage();
