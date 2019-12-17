@@ -26,8 +26,12 @@ public class OutputView {
         System.out.println(selectedSchedule.toString());
     }
 
+    public static void printMoviePrice(double moviePrice) {
+        System.out.println("\n결제 금액은 " + moviePrice + "원 입니다.");
+    }
+
     public static void printAfterPointPrice(double moviePrice) {
-        System.out.println("결제 금액은 " + moviePrice + "원 입니다.");
+        System.out.println("\n결제 금액은 " + moviePrice + "원 입니다.");
     }
 
     public static void printPaymentChoice(int inputPaymentChoice) {
@@ -36,6 +40,10 @@ public class OutputView {
             return;
         }
         System.out.println("현금을 선택하셨습니다.");
+    }
+
+    public static void successReserveMessage() {
+        System.out.println("결제에 성공했습니다.");
     }
 
     public static void failReserveMessage() {

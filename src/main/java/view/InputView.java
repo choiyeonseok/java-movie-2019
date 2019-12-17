@@ -11,6 +11,8 @@ public class InputView {
     private static final double ZERO = 0.0;
     private static final int CARD = 1;
     private static final int CASH = 2;
+    private static final int YES = 1;
+    private static final int NO = 2;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputMovieId() {
@@ -102,6 +104,24 @@ public class InputView {
 
     private static void verifyPaymentChoice(int paymentChoice) throws Exception {
         if (paymentChoice != CARD && paymentChoice != CASH) {
+            throw new Exception();
+        }
+    }
+
+    public static int inputAdditionalMovie() {
+        System.out.println("영화를 추가로 선택하시겠습니까? (1)예, (2)아니오");
+        try {
+            int additionalChoice = scanner.nextInt();
+            verifyPaymentChoice(additionalChoice);
+            return additionalChoice;
+        } catch (Exception e) {
+            OutputView.invalidMessage();
+            return inputAdditionalMovie();
+        }
+    }
+
+    private static void verifyAdditionalChoice(int additionalChoice) throws Exception {
+        if (additionalChoice != YES && additionalChoice != NO) {
             throw new Exception();
         }
     }

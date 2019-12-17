@@ -1,7 +1,7 @@
 package domain;
 
 public class Cash extends Payment {
-    private static final double RATIO = 0.3;
+    private static final double RATIO = 0.03;
     private static final int PAYMENT_ID = 2;
 
     public Cash(double amount) {

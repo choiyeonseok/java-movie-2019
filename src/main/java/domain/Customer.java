@@ -18,10 +18,6 @@ public class Customer {
         this.payments = Arrays.asList(payments);
     }
 
-    public boolean isPointOverPrice(int price) {
-        return point >= price;
-    }
-
     public boolean isUsingPointAmountOverPoint(double usingPointAmount) {
         return point < usingPointAmount;
     }

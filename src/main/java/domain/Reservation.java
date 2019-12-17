@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 public class Reservation {
     private static final String NEW_LINE = "\n";
 
-    private static int reservationId = 0;
+    private static int supportNumber = 0;
+
+    private int reservationId;
     private int customerId;
     private String title;
     private LocalDateTime startDateTime;
@@ -13,7 +15,7 @@ public class Reservation {
     private double movieFee;
 
     public Reservation(int customerId, String title, LocalDateTime startDateTime, int headCount, double movieFee) {
-        reservationId ++;
+        reservationId = supportNumber++;
         this.customerId = customerId;
         this.title = title;
         this.startDateTime = startDateTime;
