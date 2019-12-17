@@ -2,6 +2,7 @@ package view;
 
 import domain.Movie;
 import domain.PlaySchedule;
+import domain.Reservation;
 
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class OutputView {
         System.out.println("잘못된 입력입니다.");
     }
 
-    public static void printScreening(Movie movie, int sequence) {
-        System.out.println(movie.getSchedule(sequence).toString());
+    public static void printScreening(PlaySchedule selectedSchedule) {
+        System.out.println(selectedSchedule.toString());
     }
 
     public static void printAfterPointPrice(double moviePrice) {
@@ -38,6 +39,14 @@ public class OutputView {
     }
 
     public static void failReserveMessage() {
-        System.out.println("결제에 실패했습니다.");
+        System.out.println("잔액 부족으로 결제에 실패했습니다.");
+    }
+
+    public static void printReservationList(List<Reservation> reservationList) {
+        for (Reservation reservation : reservationList) {
+            if (reservation != null) {
+                System.out.println(reservation);
+            }
+        }
     }
 }

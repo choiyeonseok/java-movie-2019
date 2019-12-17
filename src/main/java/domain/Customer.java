@@ -35,14 +35,18 @@ public class Customer {
         return "현재 포인트는 " + point + "점 입니다.";
     }
 
-    public Reservation reserveMovie(Movie movie, double moviePrice, int sequence, int headCount, int paymentChoice){
+    public boolean whenReserveAvailable(double moviePrice, int paymentChoice){
         Payment payment = payments.stream().filter(p -> p.checkPaymentId(paymentChoice)).findAny().get();
-        if(payment.payAvailable(moviePrice)) {
+        if (payment.payAvailable(moviePrice)) {
             point += payment.accumulateAmount(moviePrice);
             payment.minusAmount(moviePrice);
-            return new Reservation(1, customerId, movie.getName(), movie.getSchedule(sequence), headCount, moviePrice);
+            return true;
         }
         OutputView.failReserveMessage();
-        return null;
+        return false;
+    }
+
+    public int getCustomerId() {
+        return customerId;
     }
 }

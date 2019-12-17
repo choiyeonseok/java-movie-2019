@@ -28,12 +28,16 @@ public class PlaySchedule {
         return capacity >= headCount;
     }
 
-    public boolean isPastSchedule(){
+    public boolean isPastSchedule() {
         return LocalDateTime.now().isAfter(startDateTime);
     }
 
-    public boolean isOneHourRange(){
+    public boolean isOneHourRange() {
         return DateTimeUtils.isOneHourWithinRange(LocalDateTime.now(), startDateTime);
+    }
+
+    public void minusCapacity(int headCount) {
+        capacity -= headCount;
     }
 
 }
