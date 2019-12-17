@@ -5,6 +5,8 @@ import view.OutputView;
 import java.util.List;
 
 public class MovieApplication {
+    private static final double ZERO = 0.0;
+
     public static void main(String[] args) {
 
         Customer customer1 = new Customer(1004,
@@ -27,6 +29,19 @@ public class MovieApplication {
         OutputView.printScreening(selectedMovie, scheduleSequence);
 
         int headCount = InputView.inputHeadCount(selectedMovie, scheduleSequence);
+
+        double moviePrice = ZERO;
+        if (!customer1.isPointOverPrice(selectedMovie.getPrice())){
+            moviePrice = selectedMovie.calculateMoviePrice(headCount) - InputView.inputUsingPointAmount(customer1);
+            OutputView.printAfterPointPrice(moviePrice);
+        }
+
+        int paymentChoice = InputView.inputPaymentChoice();
+        OutputView.printPaymentChoice(paymentChoice);
+
+        customer1.reserveMovie(moviePrice, paymentChoice);
+
+
 
     }
 }

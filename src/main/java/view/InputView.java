@@ -1,5 +1,6 @@
 package view;
 
+import domain.Customer;
 import domain.Movie;
 import domain.MovieRepository;
 import domain.PlaySchedule;
@@ -7,6 +8,9 @@ import domain.PlaySchedule;
 import java.util.Scanner;
 
 public class InputView {
+    private static final double ZERO = 0.0;
+    private static final int CARD = 1;
+    private static final int CASH = 2;
     private static final Scanner scanner = new Scanner(System.in);
 
     public static int inputMovieId() {
@@ -63,4 +67,42 @@ public class InputView {
         }
     }
 
+    public static double inputUsingPointAmount(Customer customer){
+        if (!customer.isPointZero()){
+            System.out.println(customer.toString() + "얼마만큼 사용하시겠습니까?");
+            try {
+                double usingPointAmount = scanner.nextDouble();
+                verifyUsingPointAmount(customer, usingPointAmount);
+                return usingPointAmount;
+            } catch (Exception e) {
+                OutputView.invalidMessage();
+                return inputUsingPointAmount(customer);
+            }
+        }
+        return ZERO;
+    }
+
+    private static void verifyUsingPointAmount(Customer customer, double usingPointAmount) throws Exception {
+        if (customer.isUsingPointAmountOverPoint(usingPointAmount) | usingPointAmount < 0) {
+            throw new Exception();
+        }
+    }
+
+    public static int inputPaymentChoice(){
+        System.out.println("결제 방법을 선택해주세요: (1) 카드 (2) 현금");
+        try {
+            int paymentChoice = scanner.nextInt();
+            verifyPaymentChoice(paymentChoice);
+            return paymentChoice;
+        } catch (Exception e) {
+            OutputView.invalidMessage();
+            return inputPaymentChoice();
+        }
+    }
+
+    private static void verifyPaymentChoice(int paymentChoice) throws Exception {
+        if (paymentChoice != CARD && paymentChoice != CASH) {
+            throw new Exception();
+        }
+    }
 }

@@ -2,13 +2,19 @@ package domain;
 
 public class Cash extends Payment {
     private static final double RATIO = 0.3;
+    private static final int PAYMENT_ID = 2;
 
     public Cash(double amount) {
         super(amount);
     }
 
     @Override
-    protected double accumulateAmount(int price) {
+    protected boolean checkPaymentId(int paymentChoice) {
+        return PAYMENT_ID == paymentChoice;
+    }
+
+    @Override
+    protected double accumulateAmount(double price) {
         return RATIO * price;
     }
 }
