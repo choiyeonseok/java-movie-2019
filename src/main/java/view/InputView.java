@@ -3,9 +3,7 @@ package view;
 import domain.Movie;
 import domain.MovieRepository;
 import domain.PlaySchedule;
-import utils.DateTimeUtils;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class InputView {
@@ -51,7 +49,7 @@ public class InputView {
         System.out.println("## 예약할 인원 수를 입력하세요");
         try {
             int headCount = scanner.nextInt();
-            verifyHeadCount(movie.getSchedule(sequence), headCount);
+            verifyHeadCount(movie.getSchedule(sequence), headCount); // => @실패 시 맨 처음 영화 선택 단계로 돌아가야 함
             return headCount;
         } catch (Exception e) {
             OutputView.invalidMessage();

@@ -22,5 +22,9 @@ public class MovieApplication {
         OutputView.printScreening(selectedMovie, scheduleSequence);
 
         int headCount = InputView.inputHeadCount(selectedMovie, scheduleSequence);
+
+
+
+
     }
 }
