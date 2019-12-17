@@ -16,6 +16,8 @@ public class MovieApplication {
                 OutputView.printSchedules(movie);
             }
         }
-        // TODO 구현 진행
+
+        int scheduleId = InputView.inputScheduleId();
+        int headCount = InputView.inputHeadCount();
     }
 }

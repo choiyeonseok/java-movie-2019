@@ -15,4 +15,8 @@ public class OutputView {
     public static void printSchedules(Movie movie) {
        System.out.println(movie);
     }
+
+    public static void invalidMessage(){
+        System.out.println("잘못된 입력입니다.");
+    }
 }
