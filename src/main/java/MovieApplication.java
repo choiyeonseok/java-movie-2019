@@ -39,7 +39,7 @@ public class MovieApplication {
         int paymentChoice = InputView.inputPaymentChoice();
         OutputView.printPaymentChoice(paymentChoice);
 
-        customer1.reserveMovie(moviePrice, paymentChoice);
+        customer1.reserveMovie(selectedMovie, moviePrice, scheduleSequence, headCount, paymentChoice);
 
 
 

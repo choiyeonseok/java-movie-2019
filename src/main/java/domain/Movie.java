@@ -44,8 +44,12 @@ public class Movie {
         return playSchedules.get(sequence);
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double calculateMoviePrice(int headCount) {

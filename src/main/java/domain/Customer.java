@@ -1,5 +1,7 @@
 package domain;
 
+import view.OutputView;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,11 +35,14 @@ public class Customer {
         return "현재 포인트는 " + point + "점 입니다.";
     }
 
-    public void reserveMovie(double moviePrice, int paymentChoice){
+    public Reservation reserveMovie(Movie movie, double moviePrice, int sequence, int headCount, int paymentChoice){
         Payment payment = payments.stream().filter(p -> p.checkPaymentId(paymentChoice)).findAny().get();
         if(payment.payAvailable(moviePrice)) {
             point += payment.accumulateAmount(moviePrice);
             payment.minusAmount(moviePrice);
+            return new Reservation(1, customerId, movie.getName(), movie.getSchedule(sequence), headCount, moviePrice);
         }
+        OutputView.failReserveMessage();
+        return null;
     }
 }

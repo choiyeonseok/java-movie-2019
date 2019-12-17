@@ -37,4 +37,7 @@ public class OutputView {
         System.out.println("현금을 선택하셨습니다.");
     }
 
+    public static void failReserveMessage() {
+        System.out.println("결제에 실패했습니다.");
+    }
 }
