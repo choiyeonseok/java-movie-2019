@@ -1,5 +1,4 @@
-import domain.Movie;
-import domain.MovieRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
@@ -7,6 +6,12 @@ import java.util.List;
 
 public class MovieApplication {
     public static void main(String[] args) {
+
+        Customer customer1 = new Customer(1004,
+                                            5000,
+                                            new Card(15000),
+                                            new Cash(20000));
+
         List<Movie> movies = MovieRepository.getMovies();
         Movie selectedMovie;
         OutputView.printMovies(movies);
@@ -22,9 +27,6 @@ public class MovieApplication {
         OutputView.printScreening(selectedMovie, scheduleSequence);
 
         int headCount = InputView.inputHeadCount(selectedMovie, scheduleSequence);
-
-
-
 
     }
 }
