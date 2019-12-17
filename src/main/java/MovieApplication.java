@@ -11,7 +11,11 @@ public class MovieApplication {
         OutputView.printMovies(movies);
 
         int movieId = InputView.inputMovieId();
-
+        for (Movie movie : movies){
+            if (movie.checkMovieId(movieId)) {
+                OutputView.printSchedules(movie);
+            }
+        }
         // TODO 구현 진행
     }
 }
