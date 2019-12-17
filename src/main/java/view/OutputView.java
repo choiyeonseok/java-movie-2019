@@ -13,10 +13,14 @@ public class OutputView {
     }
 
     public static void printSchedules(Movie movie) {
-       System.out.println(movie);
+        System.out.println(movie);
     }
 
-    public static void invalidMessage(){
+    public static void invalidMessage() {
         System.out.println("잘못된 입력입니다.");
+    }
+
+    public static void printScreening(Movie movie, int sequence) {
+        System.out.println(movie.getSchedule(sequence).toString());
     }
 }

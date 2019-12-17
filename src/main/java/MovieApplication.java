@@ -8,16 +8,19 @@ import java.util.List;
 public class MovieApplication {
     public static void main(String[] args) {
         List<Movie> movies = MovieRepository.getMovies();
+        Movie selectedMovie;
         OutputView.printMovies(movies);
 
         int movieId = InputView.inputMovieId();
-        for (Movie movie : movies){
-            if (movie.checkMovieId(movieId)) {
-                OutputView.printSchedules(movie);
-            }
-        }
+        selectedMovie = movies.stream()
+                .filter(m -> m.checkMovieId(movieId))
+                .findAny()
+                .get();
+        OutputView.printSchedules(selectedMovie);
 
-        int scheduleId = InputView.inputScheduleId();
-        int headCount = InputView.inputHeadCount();
+        int scheduleSequence = InputView.inputScheduleSequence(selectedMovie);
+        OutputView.printScreening(selectedMovie, scheduleSequence);
+
+        int headCount = InputView.inputHeadCount(selectedMovie, scheduleSequence);
     }
 }

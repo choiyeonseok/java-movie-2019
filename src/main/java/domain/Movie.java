@@ -36,4 +36,12 @@ public class Movie {
         return id == MovieId;
     }
 
+    public boolean checkScheduleSequence(int sequence) {
+        return 0 <= sequence && sequence < playSchedules.size();
+    }
+
+    public PlaySchedule getSchedule(int sequence) {
+        return playSchedules.get(sequence);
+    }
+
 }
