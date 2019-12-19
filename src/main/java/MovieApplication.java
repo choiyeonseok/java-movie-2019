@@ -1,8 +1,10 @@
 import domain.Movie;
 import domain.MovieRepository;
+import domain.PickedScreening;
 import view.InputView;
 import view.OutputView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieApplication {
@@ -17,7 +19,13 @@ public class MovieApplication {
         int sequence = InputView.inputSequence(selectedMovie) - 1;
         System.out.println(sequence);
 
-        int headCount = InputView.inputHeadCount(selectedMovie, sequence);
+        PickedScreening pickedScreening = new PickedScreening(selectedMovie, sequence);
+
+        int headCount = InputView.inputHeadCount(pickedScreening);
+        pickedScreening.minusCapacityAndSaveHeadCount(headCount);
+
+        List<PickedScreening> baskets = new ArrayList<>();
+        baskets.add(pickedScreening);
 
 
 
