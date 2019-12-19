@@ -11,7 +11,10 @@ public class MovieApplication {
         OutputView.printMovies(movies);
 
         int movieId = InputView.inputMovieId(movies);
-        System.out.println(movieId);
+
+        Movie selectedMovie = movies.stream().filter(m -> m.isMatchId(movieId)).findAny().get();
+        OutputView.printSelectedMovie(selectedMovie);
+
 
 
 
