@@ -51,6 +51,26 @@ public class InputView {
     }
 
     public static int inputHeadCount(Movie movie, int sequence) {
-
+        scanner = new Scanner(System.in);
+        System.out.println("## 예약할 인원를 입력하세요.");
+        try {
+            int headCount = scanner.nextInt();
+            verifyHeadCount(headCount, movie, sequence);
+            return headCount;
+        } catch (IllegalArgumentException e){
+            System.out.println("예매 가능 인원을 초과했습니다.");
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해 주세요");
+        }
+        return inputHeadCount(movie, sequence);
     }
+
+    private static void verifyHeadCountWithCapacity(int headCount, Movie movie, int sequence) {
+        // 0이하의 예외처리는 따로 분리할 예정.
+        if (headCount <= 0 | movie.getPlaySchedule(sequence).isOverCapacity(headCount)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+
 }

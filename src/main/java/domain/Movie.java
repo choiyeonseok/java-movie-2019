@@ -30,6 +30,10 @@ public class Movie {
         return playSchedules.size();
     }
 
+    public PlaySchedule getPlaySchedule(int sequence){
+        return playSchedules.get(sequence);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
