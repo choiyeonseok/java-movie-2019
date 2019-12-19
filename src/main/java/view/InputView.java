@@ -24,11 +24,33 @@ public class InputView {
     }
 
     private static void verifyMovieId(int id, List<Movie> movies) {
-        if (id < 0 | movies.stream().filter(m -> m.isMatchId(id)).count() == 0) {
+        if (id <= 0 | movies.stream().filter(m -> m.isMatchId(id)).count() == 0) {
             throw new IllegalArgumentException();
         }
     }
 
+    public static int inputSequence(Movie movie) {
+        scanner = new Scanner(System.in);
+        System.out.println("## 예약할 상영 회차를 선택하세요.");
+        try {
+            int sequence = scanner.nextInt();
+            verifySequence(sequence, movie);
+            return sequence;
+        } catch (IllegalArgumentException e){
+            System.out.println("유효한 상영 회차 번호를 입력해 주세요");
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해 주세요");
+        }
+        return inputSequence(movie);
+    }
 
+    private static void verifySequence(int sequence, Movie movie) {
+        if (sequence <= 0 | sequence > movie.maxSequence()){
+            throw new IllegalArgumentException();
+        }
+    }
 
+    public static int inputHeadCount(Movie movie, int sequence) {
+
+    }
 }

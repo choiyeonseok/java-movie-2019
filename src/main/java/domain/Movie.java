@@ -26,6 +26,10 @@ public class Movie {
         return this.id == id;
     }
 
+    public int maxSequence(){
+        return playSchedules.size();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
