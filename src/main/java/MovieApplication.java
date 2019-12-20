@@ -1,14 +1,15 @@
-import domain.Movie;
-import domain.MovieRepository;
-import domain.PickedScreening;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
+import javax.smartcardio.Card;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovieApplication {
     public static void main(String[] args) {
+        Customer customer = new Customer(1, 8000, new Payment("Card", 0.05), new Payment("Cash", 0.03));
+
         List<Movie> movies = MovieRepository.getMovies();
         OutputView.printMovies(movies);
 
@@ -28,7 +29,6 @@ public class MovieApplication {
         baskets.add(pickedScreening);
 
         int BackToBeginning = InputView.inputAdditionalScreening();
-
         if(BackToBeginning == 2) { }
 
 
