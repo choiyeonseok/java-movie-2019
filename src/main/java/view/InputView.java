@@ -77,16 +77,8 @@ public class InputView {
 
     public static int inputAdditionalScreening() {
         System.out.println("추가로 영화를 예약하시겠습니까? (1)예 (2)아니오");
-        scanner = new Scanner(System.in);
-        try {
-            int choice = scanner.nextInt();
-            verifyChoice(choice);
-            return choice;
-        } catch (IllegalArgumentException e) {
-            System.out.println("잘못된 입력 범위입니다.");
-        } catch (Exception e) {
-            System.out.println("숫자를 입력해 주세요");
-        }
+        Integer choice = getChoice();
+        if (choice != null) return choice;
         return inputAdditionalScreening();
     }
 
@@ -115,5 +107,26 @@ public class InputView {
         if (pointUsage < 0 | customer.isOverPoint(pointUsage)){
             throw new IllegalArgumentException();
         }
+    }
+
+    public static Integer inputPaymentChoice() {
+        System.out.println("결제수단을 선택해주세요 (1)카드 (2)현금");
+        Integer choice = getChoice();
+        if (choice != null) return choice;
+        return inputPaymentChoice();
+    }
+
+    private static Integer getChoice() {
+        scanner = new Scanner(System.in);
+        try {
+            int choice = scanner.nextInt();
+            verifyChoice(choice);
+            return choice;
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 입력 범위입니다.");
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해 주세요");
+        }
+        return null;
     }
 }

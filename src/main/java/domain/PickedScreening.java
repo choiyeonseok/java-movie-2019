@@ -22,7 +22,14 @@ public class PickedScreening {
     }
 
     public int getMoviePrice(){
-        return movie.getPrice();
+        return movie.getPrice() * headCount;
     }
 
+    @Override
+    public String toString(){
+        return "영화 제목 : " + movie.getName() + "\n"
+                + "상영 회차 : " + sequence + "\n"
+                + "상영 시간 : " + playSchedule.getStartDateTime() + "\n"
+                + "예약 인원 : " + headCount + "\n";
+    }
 }

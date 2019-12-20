@@ -16,11 +16,14 @@ public class Basket {
         totalFee += screening.getMoviePrice();
     }
 
-    public int getTotalFee(){
-        return totalFee;
+    public void createReservation(ReservationList reservationList){
+        for (PickedScreening screening : baskets){
+            reservationList.addList(new Reservation(screening));
+        }
+        baskets = new ArrayList<>();
     }
 
-    public void makeTotalFeeZero() {
-        totalFee = 0;
+    public int getTotalFee(){
+        return totalFee;
     }
 }
