@@ -27,6 +27,9 @@ public class MovieApplication {
         List<PickedScreening> baskets = new ArrayList<>();
         baskets.add(pickedScreening);
 
+        int BackToBeginning = InputView.inputAdditionalScreening();
+
+        if(BackToBeginning == 2) { }
 
 
     }
