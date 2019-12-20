@@ -22,6 +22,10 @@ public class Customer {
         return point == 0;
     }
 
+    public boolean isOverPoint(int pointUsage) {
+        return pointUsage > point;
+    }
+
     @Override
     public String toString() {
         return "" + customerId + "의 현재 포인트는 " + point + "점 입니다.";

@@ -32,6 +32,17 @@ public class MovieApplication {
         if(BackToBeginning == 2) { }
 
         OutputView.printCustomerPoint(customer);
+        if(customer.hasPointOverFee(basket.getTotalFee())){
+            basket.makeTotalFeeZero();
+        }
+
+        if(customer.isPointZero()){
+            //바로 결제로
+        }
+
+        double pointUsage = InputView.inputPointUsage(customer);
+        double actualAmount = basket.getTotalFee() - pointUsage;
+
 
 
     }

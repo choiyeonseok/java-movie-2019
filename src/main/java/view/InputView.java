@@ -1,5 +1,6 @@
 package view;
 
+import domain.Customer;
 import domain.Movie;
 import domain.PickedScreening;
 
@@ -91,6 +92,27 @@ public class InputView {
 
     private static void verifyChoice(int choice) {
         if (choice != 1 && choice != 2) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static double inputPointUsage(Customer customer) {
+        System.out.println("사용하실 포인트를 입력해 주세요");
+        scanner = new Scanner(System.in);
+        try {
+            int pointUsage = scanner.nextInt();
+            verifyPointUsage(pointUsage, customer);
+            return pointUsage;
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 입력 범위입니다.");
+        } catch (Exception e) {
+            System.out.println("숫자를 입력해 주세요");
+        }
+        return inputPointUsage(customer);
+    }
+
+    private static void verifyPointUsage(int pointUsage, Customer customer) {
+        if (pointUsage < 0 | customer.isOverPoint(pointUsage)){
             throw new IllegalArgumentException();
         }
     }

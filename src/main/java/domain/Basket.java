@@ -19,4 +19,8 @@ public class Basket {
     public int getTotalFee(){
         return totalFee;
     }
+
+    public void makeTotalFeeZero() {
+        totalFee = 0;
+    }
 }
