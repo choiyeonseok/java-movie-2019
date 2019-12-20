@@ -21,4 +21,8 @@ public class PickedScreening {
         this.headCount = headCount;
     }
 
+    public int getMoviePrice(){
+        return movie.getPrice();
+    }
+
 }

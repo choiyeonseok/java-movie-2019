@@ -34,6 +34,10 @@ public class Movie {
         return playSchedules.get(sequence);
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

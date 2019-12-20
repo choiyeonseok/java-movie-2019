@@ -8,9 +8,22 @@ public class Customer {
     private double point;
     private List<Payment> payments;
 
-    public Customer(int customerId, double point, Payment ... payments) {
+    public Customer(int customerId, double point, Payment... payments) {
         this.customerId = customerId;
         this.point = point;
         this.payments = Arrays.asList(payments);
+    }
+
+    public boolean hasPointOverFee(int totalFee) {
+        return point > totalFee;
+    }
+
+    public boolean isPointZero() {
+        return point == 0;
+    }
+
+    @Override
+    public String toString() {
+        return "" + customerId + "의 현재 포인트는 " + point + "점 입니다.";
     }
 }

@@ -25,11 +25,13 @@ public class MovieApplication {
         int headCount = InputView.inputHeadCount(pickedScreening);
         pickedScreening.minusCapacityAndSaveHeadCount(headCount);
 
-        List<PickedScreening> baskets = new ArrayList<>();
-        baskets.add(pickedScreening);
+        Basket basket = new Basket();
+        basket.addScreening(pickedScreening);
 
         int BackToBeginning = InputView.inputAdditionalScreening();
         if(BackToBeginning == 2) { }
+
+        OutputView.printCustomerPoint(customer);
 
 
     }
